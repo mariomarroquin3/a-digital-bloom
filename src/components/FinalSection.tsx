@@ -7,7 +7,7 @@ const FinalSection = () => {
   const [easterEggFound, setEasterEggFound] = useState(false);
 
   return (
-    <section className="relative z-20 py-32 md:py-48">
+    <section className="relative z-20 py-40 md:py-56">
       <div className="max-w-2xl mx-auto px-6 text-center">
         <ScrollReveal>
           <motion.div

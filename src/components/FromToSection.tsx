@@ -4,7 +4,7 @@ import { Heart, Sparkles } from "lucide-react";
 
 const FromToSection = () => {
   return (
-    <section className="relative z-20 py-20 md:py-28">
+    <section className="relative z-20 py-28 md:py-36">
       <div className="max-w-4xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
           {/* From Card */}

@@ -7,7 +7,7 @@ const HeroSection = () => {
   const y = useTransform(scrollY, [0, 400], [0, 100]);
 
   return (
-    <section className="relative z-20 min-h-screen flex items-center justify-center">
+    <section className="relative z-20 min-h-screen flex items-center justify-center pb-24">
       <motion.div
         className="text-center px-6 py-20"
         style={{ opacity, y }}

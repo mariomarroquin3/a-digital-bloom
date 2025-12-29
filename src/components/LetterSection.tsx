@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
+import PlayfulNote, { DoNotClickButton } from "./PlayfulNote";
 
 const letterParagraphs = [
   "My Dearest Love,",
@@ -15,12 +16,12 @@ const letterParagraphs = [
 
 const LetterSection = () => {
   return (
-    <section className="relative z-20 py-24 md:py-32">
+    <section className="relative z-20 py-32 md:py-44">
       <div className="max-w-3xl mx-auto px-6 md:px-8">
         <ScrollReveal>
           <div className="glass-card rounded-2xl p-8 md:p-12 lg:p-16">
             <div className="space-y-8">
-              {letterParagraphs.map((paragraph, index) => (
+              {letterParagraphs.slice(0, 4).map((paragraph, index) => (
                 <LetterParagraph
                   key={index}
                   text={paragraph}
@@ -29,11 +30,25 @@ const LetterSection = () => {
                 />
               ))}
 
+              {/* Playful crossed-out note */}
+              <PlayfulNote />
+
+              {letterParagraphs.slice(4).map((paragraph, index) => (
+                <LetterParagraph
+                  key={index + 4}
+                  text={paragraph}
+                  delay={(index + 4) * 0.15}
+                />
+              ))}
+
               <ScrollReveal delay={letterParagraphs.length * 0.15}>
                 <p className="font-display italic text-xl md:text-2xl text-primary text-right mt-12">
                   Forever Yours
                 </p>
               </ScrollReveal>
+
+              {/* Do not click easter egg */}
+              <DoNotClickButton />
             </div>
           </div>
         </ScrollReveal>

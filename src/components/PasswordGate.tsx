@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
+import AnimatedLily from "./AnimatedLily";
 
 interface PasswordGateProps {
   onSuccess: () => void;
@@ -64,13 +65,15 @@ const PasswordGate = ({ onSuccess, correctPassword }: PasswordGateProps) => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="text-center mb-12">
+              {/* Animated Lily Drawing */}
               <motion.div
-                className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 mb-6"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                className="inline-flex items-center justify-center mb-6"
+                animate={{ scale: [1, 1.02, 1] }}
+                transition={{ duration: 4, repeat: Infinity }}
               >
-                <Heart className="w-10 h-10 text-primary" fill="currentColor" />
+                <AnimatedLily isComplete={isExiting} />
               </motion.div>
+              
               <h1 className="font-display text-3xl md:text-4xl text-foreground mb-3">
                 A Gift Awaits
               </h1>
