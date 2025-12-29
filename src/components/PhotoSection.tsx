@@ -104,7 +104,7 @@ const PhotoSection = () => {
   ];
 
   return (
-    <section className="relative z-20 py-20 md:py-28">
+    <section className="relative z-20 py-28 md:py-36">
       <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal>
           <h2 className="font-display text-3xl md:text-4xl text-center text-foreground mb-16">

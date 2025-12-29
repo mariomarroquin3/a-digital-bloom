@@ -8,8 +8,10 @@ import HeroSection from "@/components/HeroSection";
 import FromToSection from "@/components/FromToSection";
 import LetterSection from "@/components/LetterSection";
 import PhotoSection from "@/components/PhotoSection";
+import MemorySlider from "@/components/MemorySlider";
 import ChocolateSection from "@/components/ChocolateSection";
 import FinalSection from "@/components/FinalSection";
+import ParrotEasterEgg from "@/components/ParrotEasterEgg";
 
 const Index = () => {
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -46,11 +48,15 @@ const Index = () => {
             {/* Floating Petals */}
             <FloatingPetals />
 
+            {/* Parrot Easter Egg */}
+            <ParrotEasterEgg />
+
             {/* Content Sections */}
             <main className="relative z-10">
               <HeroSection />
               <FromToSection />
               <LetterSection />
+              <MemorySlider />
               <PhotoSection />
               <ChocolateSection />
               <FinalSection />
