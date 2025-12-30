@@ -12,6 +12,7 @@ import MemorySlider from "@/components/MemorySlider";
 import ChocolateSection from "@/components/ChocolateSection";
 import FinalSection from "@/components/FinalSection";
 import ParrotEasterEgg from "@/components/ParrotEasterEgg";
+import MusicPlayer from "@/components/MusicPlayer";
 
 const Index = () => {
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -41,6 +42,9 @@ const Index = () => {
           >
             {/* Theme Toggle */}
             <ThemeToggle />
+
+            {/* Music Player */}
+            <MusicPlayer />
 
             {/* Parallax Background */}
             <ParallaxBackground />

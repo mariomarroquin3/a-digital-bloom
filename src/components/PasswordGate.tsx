@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock } from "lucide-react";
+import { Lock, Sparkles } from "lucide-react";
 import AnimatedLily from "./AnimatedLily";
 
 interface PasswordGateProps {
@@ -8,16 +8,42 @@ interface PasswordGateProps {
   correctPassword: string;
 }
 
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
+  delay: number;
+}
+
 const PasswordGate = ({ onSuccess, correctPassword }: PasswordGateProps) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
+  const [particles, setParticles] = useState<Particle[]>([]);
+
+  // Generate floating light particles
+  useEffect(() => {
+    const newParticles: Particle[] = [];
+    for (let i = 0; i < 20; i++) {
+      newParticles.push({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 4 + 2,
+        duration: Math.random() * 8 + 6,
+        delay: Math.random() * 5,
+      });
+    }
+    setParticles(newParticles);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (password.toLowerCase() === correctPassword.toLowerCase()) {
       setIsExiting(true);
-      setTimeout(onSuccess, 800);
+      setTimeout(onSuccess, 1000);
     } else {
       setError(true);
       setTimeout(() => setError(false), 3000);
@@ -26,33 +52,66 @@ const PasswordGate = ({ onSuccess, correctPassword }: PasswordGateProps) => {
 
   return (
     <AnimatePresence>
-      {!isExiting && (
+      {!isExiting ? (
         <motion.div
           className="fixed inset-0 z-50 flex items-center justify-center gradient-hero"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
         >
-          {/* Background decorative elements */}
+          {/* Floating light particles */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {particles.map((particle) => (
+              <motion.div
+                key={particle.id}
+                className="absolute rounded-full bg-primary/40"
+                style={{
+                  left: `${particle.x}%`,
+                  top: `${particle.y}%`,
+                  width: particle.size,
+                  height: particle.size,
+                  filter: "blur(1px)",
+                }}
+                animate={{
+                  y: [-20, -60, -20],
+                  x: [0, Math.random() * 30 - 15, 0],
+                  opacity: [0, 0.8, 0],
+                  scale: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: particle.duration,
+                  delay: particle.delay,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Soft animated gradient orbs */}
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute rounded-full bg-primary/10"
+                className="absolute rounded-full"
                 style={{
-                  width: 100 + i * 50,
-                  height: 100 + i * 50,
-                  left: `${20 + i * 15}%`,
-                  top: `${10 + i * 18}%`,
+                  width: 120 + i * 60,
+                  height: 120 + i * 60,
+                  left: `${15 + i * 18}%`,
+                  top: `${8 + i * 16}%`,
+                  background: `radial-gradient(circle, hsl(var(--primary) / ${0.15 - i * 0.02}) 0%, transparent 70%)`,
+                  filter: "blur(40px)",
                 }}
                 animate={{
-                  y: [0, -20, 0],
-                  opacity: [0.3, 0.5, 0.3],
+                  y: [0, -30, 0],
+                  x: [0, 15, 0],
+                  scale: [1, 1.1, 1],
                 }}
                 transition={{
-                  duration: 4 + i,
+                  duration: 6 + i * 1.5,
                   repeat: Infinity,
                   ease: "easeInOut",
+                  delay: i * 0.8,
                 }}
               />
             ))}
@@ -65,13 +124,27 @@ const PasswordGate = ({ onSuccess, correctPassword }: PasswordGateProps) => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="text-center mb-12">
-              {/* Animated Lily Drawing */}
+              {/* Animated Lily Drawing with enhanced glow */}
               <motion.div
-                className="inline-flex items-center justify-center mb-6"
-                animate={{ scale: [1, 1.02, 1] }}
-                transition={{ duration: 4, repeat: Infinity }}
+                className="inline-flex items-center justify-center mb-8"
+                animate={{ 
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{ duration: 5, repeat: Infinity }}
               >
                 <AnimatedLily isComplete={isExiting} />
+              </motion.div>
+
+              {/* Sparkle decoration */}
+              <motion.div
+                className="flex justify-center gap-3 mb-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5 }}
+              >
+                <Sparkles className="w-4 h-4 text-primary/50" />
+                <Sparkles className="w-3 h-3 text-primary/30" />
+                <Sparkles className="w-4 h-4 text-primary/50" />
               </motion.div>
               
               <h1 className="font-display text-3xl md:text-4xl text-foreground mb-3">
@@ -117,6 +190,24 @@ const PasswordGate = ({ onSuccess, correctPassword }: PasswordGateProps) => {
               )}
             </AnimatePresence>
           </motion.div>
+        </motion.div>
+      ) : (
+        /* Success bloom animation */
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1.2, delay: 0.3 }}
+        >
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background: "radial-gradient(circle at center, hsl(var(--primary) / 0.3) 0%, transparent 70%)",
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 3, opacity: [0, 1, 0] }}
+            transition={{ duration: 1.2 }}
+          />
         </motion.div>
       )}
     </AnimatePresence>
