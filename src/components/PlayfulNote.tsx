@@ -48,11 +48,11 @@ export const DoNotClickButton = () => {
   const [clickCount, setClickCount] = useState(0);
 
   const messages = [
-    "I said don't click! 💜",
+    "I said don't click!",
     "You're so curious...",
-    "Fine, I love you anyway",
-    "Stop it! (don't stop)",
-    "You're adorable 🥰",
+    "There is nothing here!",
+    "I told you",
+    "Okay, you win, here's a secret message: You are amazing!",
   ];
 
   const handleClick = () => {

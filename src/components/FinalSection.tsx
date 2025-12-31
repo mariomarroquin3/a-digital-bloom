@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import { Heart } from "lucide-react";
+import { Star } from "lucide-react";
 
 const FinalSection = () => {
   const [easterEggFound, setEasterEggFound] = useState(false);
@@ -15,7 +15,7 @@ const FinalSection = () => {
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 3, repeat: Infinity }}
           >
-            <Heart className="w-12 h-12 text-primary" fill="currentColor" />
+            <Star className="w-12 h-12 text-primary" fill="currentColor" />
           </motion.div>
         </ScrollReveal>
 
@@ -64,7 +64,7 @@ const FinalSection = () => {
                   animate={{ opacity: 1 }}
                   className="text-primary"
                 >
-                  I will love you in every lifetime 💜
+                  I wish the best for you
                 </motion.span>
               ) : (
                 "・・・"

@@ -151,7 +151,7 @@ const PasswordGate = ({ onSuccess, correctPassword }: PasswordGateProps) => {
                 A Gift Awaits
               </h1>
               <p className="text-muted-foreground font-body text-lg">
-                Enter the secret word to unwrap your surprise
+                Enter my favorite color to unwrap your surprise
               </p>
             </div>
 
@@ -185,7 +185,7 @@ const PasswordGate = ({ onSuccess, correctPassword }: PasswordGateProps) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                 >
-                  Not quite, my love. Try again with your heart 💜
+                  Not quite, try again, come on...
                 </motion.p>
               )}
             </AnimatePresence>

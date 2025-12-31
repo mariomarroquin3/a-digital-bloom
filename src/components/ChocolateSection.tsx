@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const sweetMessages = [
-  { text: "You make life sweeter", emoji: "🍫" },
-  { text: "Every moment with you is a treat", emoji: "💝" },
-  { text: "You're my favorite flavor", emoji: "🌸" },
-  { text: "Sweeter than any dessert", emoji: "✨" },
+  { text: "Here is the first...", emoji: "🍫" },
+  { text: "second...", emoji: "🍫" },
+  { text: "third...", emoji: "🍫" },
+  { text: "aand fourth.", emoji: "🍫" },
 ];
 
 const ChocolateSection = () => {
@@ -14,10 +14,10 @@ const ChocolateSection = () => {
       <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
           <h2 className="font-display text-3xl md:text-4xl text-center text-foreground mb-6">
-            Sweet Nothings
+            Some chocolates for you
           </h2>
           <p className="text-center text-muted-foreground font-body text-lg mb-16 max-w-xl mx-auto">
-            Little sweet messages, like chocolates in a box, each one holding something special
+            These are the  chocolates I owe you, hopefully they sweeten your day!
           </p>
         </ScrollReveal>
 

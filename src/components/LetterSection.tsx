@@ -4,14 +4,14 @@ import ScrollReveal from "./ScrollReveal";
 import PlayfulNote, { DoNotClickButton } from "./PlayfulNote";
 
 const letterParagraphs = [
-  "My Dearest Love,",
-  "On this special day, I find myself searching for words grand enough to capture what you mean to me. But perhaps the most honest words are the simplest ones.",
-  "You are my sunrise and my favorite song. You are the calm in my chaos and the adventure in my routine. Every moment with you feels like coming home.",
-  "I've watched you grow, dream, stumble, and rise again with grace that leaves me breathless. Your strength inspires me. Your kindness humbles me. Your laugh is my favorite sound in any universe.",
-  "Today, I celebrate not just the day you were born, but every version of you that has existed since. The child who dreamed big. The person who works hard. The soul who loves deeply.",
-  "Thank you for choosing to share your days with me. Thank you for your patience, your warmth, and for being exactly who you are.",
-  "May this new year of your life bring you all the magic you deserve—and a little bit more.",
-  "Happy Birthday, my love. Today and always, you are celebrated. You are cherished. You are loved beyond measure.",
+  "Dear my friend,",
+  "On your birthday, I wanted to give you something meaningful. Even if I can’t hand you a physical gift, this is my way of being there for you in the best way I know how.",
+  "I’m sorry I can’t be with you today, but I hope this little space on the internet can carry my congratulations and remind you that you’re not alone, not today and not ever.",
+  "You are an incredible person and an even better friend. Even tough you often get mad at me, sometimes I don’t understand why, but I promise I’ll keep trying to make it right.",
+  "I vouch for a good year, a year full of smiles, gossiping, joking, chocolates, parrots, and everything else.",
+  "Thank you for being such a good friend to me, for the conversations, the laughs, and for simply being you, also when you give me advice or when you want chocolate (which happens all the time).",
+  "I hope this new year brings you happiness, peace, and many reasons to smile. You deserve all the good that’s coming your way.",
+  "Happy Birthday. This is my gift to you, made with a lot of care and affection."
 ];
 
 const LetterSection = () => {
@@ -43,7 +43,7 @@ const LetterSection = () => {
 
               <ScrollReveal delay={letterParagraphs.length * 0.15}>
                 <p className="font-display italic text-xl md:text-2xl text-primary text-right mt-12">
-                  Forever Yours
+                  From a friend 
                 </p>
               </ScrollReveal>
 

@@ -53,7 +53,7 @@ const MemorySlider = () => {
             Our Memories
           </h2>
           <p className="font-body text-muted-foreground text-lg max-w-md mx-auto">
-            A timeline of moments that made my heart sing
+            Some good memories
           </p>
         </div>
       </ScrollReveal>

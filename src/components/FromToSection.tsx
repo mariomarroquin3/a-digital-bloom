@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import { Heart, Sparkles } from "lucide-react";
+import { Sparkles, Star } from "lucide-react";
 
 const FromToSection = () => {
   return (
@@ -21,20 +21,20 @@ const FromToSection = () => {
                 From
               </p>
               <p className="font-display text-2xl md:text-3xl text-foreground">
-                Someone Who Loves You
+                Mario Marroquín
               </p>
               <div className="mt-4 h-px w-16 mx-auto bg-primary/30" />
             </motion.div>
           </ScrollReveal>
 
-          {/* Heart connector */}
+          {/* Star connector */}
           <ScrollReveal delay={0.3}>
             <motion.div
               className="hidden md:flex items-center justify-center"
               animate={{ scale: [1, 1.1, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Heart className="w-10 h-10 text-primary" fill="currentColor" />
+              <Star className="w-10 h-10 text-primary" fill="currentColor" />
             </motion.div>
           </ScrollReveal>
 
@@ -52,7 +52,7 @@ const FromToSection = () => {
                 To
               </p>
               <p className="font-display text-2xl md:text-3xl text-foreground">
-                The Most Beautiful Soul
+                Alicia Olivares
               </p>
               <div className="mt-4 h-px w-16 mx-auto bg-primary/30" />
             </motion.div>

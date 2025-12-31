@@ -18,7 +18,7 @@ const Index = () => {
   const [isUnlocked, setIsUnlocked] = useState(false);
 
   // Change this password to your secret word
-  const secretPassword = "love";
+  const secretPassword = "green";
 
   return (
     <div className="relative min-h-screen bg-background overflow-x-hidden">

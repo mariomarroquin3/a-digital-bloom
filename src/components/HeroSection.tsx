@@ -37,7 +37,7 @@ const HeroSection = () => {
           />
 
           <p className="font-display italic text-xl md:text-2xl text-muted-foreground max-w-lg mx-auto">
-            A letter written from the heart, wrapped in love, just for you
+            A letter written for you
           </p>
         </motion.div>
 
