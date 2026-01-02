@@ -11,14 +11,13 @@ interface MemorySlide {
 }
 
 const memories: MemorySlide[] = [
-  { id: 1, date: "January 2024", caption: "The day we first met", image: "/images/img1.jpeg" },
-  { id: 2, date: "March 2024", caption: "Our first adventure together", image: "/images/img2.jpeg" },
-  { id: 3, date: "May 2024", caption: "When you made me laugh until I cried", image: "/images/img3.jpeg" },
-  { id: 4, date: "July 2024", caption: "That sunset we'll never forget", image: "/images/img4.jpeg" },
-  { id: 5, date: "September 2024", caption: "Dancing in the rain", image: "/images/img5.jpeg" },
-  { id: 6, date: "December 2024", caption: "Building our dreams together", image: "/images/img6.jpeg" },
-  { id: 7, date: "February 2025", caption: "A moment of pure joy", image: "/images/img7.jpeg" },
-  { id: 8, date: "April 2025", caption: "Forever grateful for you", image: "/images/img8.jpeg" },
+  { id: 1, date: "June 2025", caption: "Trying to clean the panel", image: "/images/img1.jpeg" },
+  { id: 2, date: "December 2025", caption: "At Decameron", image: "/images/img2.jpeg" },
+  { id: 3, date: "? 2025", caption: "A random photo I got", image: "/images/img3.jpeg" },
+  { id: 4, date: "March 2025", caption: "The contest where mi microphone stopped working, you are there", image: "/images/img4.jpeg" },
+  { id: 5, date: "?", caption: "Eating pizza, I don't know the date", image: "/images/img5.jpeg" },
+  { id: 6, date: "November 2025", caption: "I told you, You got 2nd, was I right?", image: "/images/img6.jpeg" },
+
 ];
 
 const MemorySlider = () => {

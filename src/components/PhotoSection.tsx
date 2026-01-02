@@ -140,8 +140,8 @@ const PhotoSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   
   const photos = [
-    { caption: "A moment frozen in time", imageUrl: "/images/img7.jpeg" },
-    { caption: "Where magic happens", imageUrl: "/images/img8.jpeg" },
+    { caption: "A good day, casually", imageUrl: "/images/img7.jpeg" },
+    { caption: "On another country", imageUrl: "/images/img8.jpeg" },
   ];
 
   return (
