@@ -140,8 +140,8 @@ const PhotoSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   
   const photos = [
-    { caption: "A moment frozen in time" },
-    { caption: "Where magic happens" },
+    { caption: "A moment frozen in time", imageUrl: "/images/img7.jpeg" },
+    { caption: "Where magic happens", imageUrl: "/images/img8.jpeg" },
   ];
 
   return (
@@ -163,6 +163,7 @@ const PhotoSection = () => {
               <PhotoCard 
                 index={index} 
                 caption={photo.caption}
+                imageUrl={photo.imageUrl}
                 onOpen={() => setOpenIndex(index)}
               />
             </ScrollReveal>
@@ -175,7 +176,7 @@ const PhotoSection = () => {
         isOpen={openIndex !== null}
         onClose={() => setOpenIndex(null)}
         caption={openIndex !== null ? photos[openIndex].caption : ""}
-        imageUrl={undefined}
+        imageUrl={openIndex !== null ? photos[openIndex].imageUrl : undefined}
       />
     </section>
   );
