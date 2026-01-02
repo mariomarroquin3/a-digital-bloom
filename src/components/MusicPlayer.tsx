@@ -75,31 +75,14 @@ const MusicPlayer = () => {
             className="fixed bottom-6 left-6 z-40"
           >
             <motion.div
-              className={`flex items-center gap-2 p-3 rounded-full bg-card/80 backdrop-blur-md border border-border/50 shadow-card transition-all duration-300 ${isExpanded ? 'pr-4' : ''}`}
+              className="flex items-center gap-2 p-3 rounded-full bg-card/80 backdrop-blur-md border border-border/50 shadow-card"
               onMouseEnter={() => setIsExpanded(true)}
               onMouseLeave={() => setIsExpanded(false)}
             >
-              {/* Previous button */}
-              <AnimatePresence>
-                {isExpanded && (
-                  <motion.button
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: 'auto' }}
-                    exit={{ opacity: 0, width: 0 }}
-                    onClick={prevTrack}
-                    className="p-1.5 rounded-full hover:bg-primary/10 transition-colors"
-                    aria-label="Previous track"
-                  >
-                    <SkipBack className="w-4 h-4 text-muted-foreground hover:text-primary transition-colors" />
-                  </motion.button>
-                )}
-              </AnimatePresence>
-
-              {/* Play/Pause button */}
+              {/* Play/Pause button - always first to prevent position shift */}
               <motion.button
                 onClick={togglePlay}
-                className="p-2 rounded-full hover:bg-primary/10 transition-colors relative group"
-                whileHover={{ scale: 1.05 }}
+                className="p-2 rounded-full hover:bg-primary/10 transition-colors relative group flex-shrink-0"
                 whileTap={{ scale: 0.95 }}
                 aria-label={isPlaying ? "Pause music" : "Play music"}
               >
@@ -138,33 +121,30 @@ const MusicPlayer = () => {
                   )}
                 </AnimatePresence>
               </motion.button>
-
-              {/* Next button */}
-              <AnimatePresence>
-                {isExpanded && (
-                  <motion.button
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: 'auto' }}
-                    exit={{ opacity: 0, width: 0 }}
-                    onClick={nextTrack}
-                    className="p-1.5 rounded-full hover:bg-primary/10 transition-colors"
-                    aria-label="Next track"
-                  >
-                    <SkipForward className="w-4 h-4 text-muted-foreground hover:text-primary transition-colors" />
-                  </motion.button>
-                )}
-              </AnimatePresence>
-
-              {/* Track info */}
+              {/* Controls that appear on hover - after the main button */}
               <AnimatePresence>
                 {isExpanded && (
                   <motion.div
                     initial={{ opacity: 0, width: 0 }}
                     animate={{ opacity: 1, width: 'auto' }}
                     exit={{ opacity: 0, width: 0 }}
-                    className="overflow-hidden"
+                    className="flex items-center gap-1 overflow-hidden"
                   >
-                    <span className="text-xs font-body text-muted-foreground whitespace-nowrap pl-2">
+                    <motion.button
+                      onClick={prevTrack}
+                      className="p-1.5 rounded-full hover:bg-primary/10 transition-colors"
+                      aria-label="Previous track"
+                    >
+                      <SkipBack className="w-4 h-4 text-muted-foreground hover:text-primary transition-colors" />
+                    </motion.button>
+                    <motion.button
+                      onClick={nextTrack}
+                      className="p-1.5 rounded-full hover:bg-primary/10 transition-colors"
+                      aria-label="Next track"
+                    >
+                      <SkipForward className="w-4 h-4 text-muted-foreground hover:text-primary transition-colors" />
+                    </motion.button>
+                    <span className="text-xs font-body text-muted-foreground whitespace-nowrap pl-2 pr-1">
                       {playlist[currentTrack].title}
                     </span>
                   </motion.div>
