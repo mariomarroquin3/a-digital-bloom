@@ -5,11 +5,59 @@ const HeroSection = () => {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
   const y = useTransform(scrollY, [0, 400], [0, 100]);
+  
+  // Parallax transforms for background elements
+  const bgY1 = useTransform(scrollY, [0, 500], [0, 150]);
+  const bgY2 = useTransform(scrollY, [0, 500], [0, 100]);
+  const bgY3 = useTransform(scrollY, [0, 500], [0, 50]);
+  const bgScale = useTransform(scrollY, [0, 500], [1, 1.1]);
+  const bgRotate = useTransform(scrollY, [0, 500], [0, 5]);
 
   return (
-    <section className="relative z-20 min-h-screen flex items-center justify-center pb-24">
+    <section className="relative z-20 min-h-screen flex items-center justify-center pb-24 overflow-hidden">
+      {/* Parallax Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Floating orbs with parallax */}
+        <motion.div
+          className="absolute top-20 left-[10%] w-64 h-64 rounded-full bg-primary/10 blur-3xl"
+          style={{ y: bgY1, scale: bgScale }}
+        />
+        <motion.div
+          className="absolute top-40 right-[15%] w-48 h-48 rounded-full bg-accent/15 blur-2xl"
+          style={{ y: bgY2, rotate: bgRotate }}
+        />
+        <motion.div
+          className="absolute bottom-40 left-[20%] w-56 h-56 rounded-full bg-primary/8 blur-3xl"
+          style={{ y: bgY3 }}
+        />
+        <motion.div
+          className="absolute top-1/3 right-[25%] w-32 h-32 rounded-full bg-muted/20 blur-xl"
+          style={{ y: bgY2, scale: bgScale }}
+        />
+        
+        {/* Decorative lines with parallax */}
+        <motion.div
+          className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+          style={{ y: bgY1 }}
+        />
+        <motion.div
+          className="absolute top-2/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent"
+          style={{ y: bgY3 }}
+        />
+        
+        {/* Corner accents */}
+        <motion.div
+          className="absolute top-10 left-10 w-24 h-24 border-l-2 border-t-2 border-primary/20 rounded-tl-3xl"
+          style={{ y: bgY1, rotate: bgRotate }}
+        />
+        <motion.div
+          className="absolute top-10 right-10 w-24 h-24 border-r-2 border-t-2 border-primary/20 rounded-tr-3xl"
+          style={{ y: bgY1, rotate: useTransform(scrollY, [0, 500], [0, -5]) }}
+        />
+      </div>
+
       <motion.div
-        className="text-center px-6 py-20"
+        className="text-center px-6 py-20 relative z-10"
         style={{ opacity, y }}
       >
         <motion.div
