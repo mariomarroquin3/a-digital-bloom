@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Lock, Sparkles } from "lucide-react";
 import AnimatedLily from "./AnimatedLily";
 
@@ -22,6 +22,23 @@ const PasswordGate = ({ onSuccess, correctPassword }: PasswordGateProps) => {
   const [error, setError] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Track mouse for parallax effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+        const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+        setMousePosition({ x, y });
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   // Generate floating light particles
   useEffect(() => {
@@ -54,11 +71,119 @@ const PasswordGate = ({ onSuccess, correctPassword }: PasswordGateProps) => {
     <AnimatePresence>
       {!isExiting ? (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center gradient-hero"
+          ref={containerRef}
+          className="fixed inset-0 z-50 flex items-center justify-center gradient-hero overflow-hidden"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.1 }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
+          {/* Parallax Background Elements */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* Deep layer - moves slowest */}
+            <motion.div
+              className="absolute top-10 left-[5%] w-72 h-72 rounded-full bg-primary/10 blur-3xl"
+              animate={{
+                x: mousePosition.x * -30,
+                y: mousePosition.y * -30,
+              }}
+              transition={{ type: "spring", stiffness: 50, damping: 30 }}
+            />
+            <motion.div
+              className="absolute bottom-20 right-[10%] w-64 h-64 rounded-full bg-accent/15 blur-3xl"
+              animate={{
+                x: mousePosition.x * -25,
+                y: mousePosition.y * -25,
+              }}
+              transition={{ type: "spring", stiffness: 50, damping: 30 }}
+            />
+            
+            {/* Mid layer - medium speed */}
+            <motion.div
+              className="absolute top-1/4 right-[20%] w-48 h-48 rounded-full bg-primary/8 blur-2xl"
+              animate={{
+                x: mousePosition.x * -50,
+                y: mousePosition.y * -50,
+              }}
+              transition={{ type: "spring", stiffness: 75, damping: 25 }}
+            />
+            <motion.div
+              className="absolute bottom-1/3 left-[15%] w-40 h-40 rounded-full bg-muted/20 blur-2xl"
+              animate={{
+                x: mousePosition.x * -45,
+                y: mousePosition.y * -45,
+              }}
+              transition={{ type: "spring", stiffness: 75, damping: 25 }}
+            />
+            
+            {/* Foreground layer - moves fastest */}
+            <motion.div
+              className="absolute top-1/3 left-[30%] w-24 h-24 rounded-full bg-primary/15 blur-xl"
+              animate={{
+                x: mousePosition.x * -80,
+                y: mousePosition.y * -80,
+              }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            />
+            <motion.div
+              className="absolute bottom-1/4 right-[25%] w-20 h-20 rounded-full bg-accent/20 blur-xl"
+              animate={{
+                x: mousePosition.x * -70,
+                y: mousePosition.y * -70,
+              }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            />
+            
+            {/* Decorative lines with parallax */}
+            <motion.div
+              className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+              animate={{
+                y: mousePosition.y * -20,
+              }}
+              transition={{ type: "spring", stiffness: 50, damping: 30 }}
+            />
+            <motion.div
+              className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent"
+              animate={{
+                y: mousePosition.y * -15,
+              }}
+              transition={{ type: "spring", stiffness: 50, damping: 30 }}
+            />
+            
+            {/* Corner accents with parallax */}
+            <motion.div
+              className="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-primary/20 rounded-tl-2xl"
+              animate={{
+                x: mousePosition.x * -40,
+                y: mousePosition.y * -40,
+              }}
+              transition={{ type: "spring", stiffness: 80, damping: 25 }}
+            />
+            <motion.div
+              className="absolute top-8 right-8 w-20 h-20 border-r-2 border-t-2 border-primary/20 rounded-tr-2xl"
+              animate={{
+                x: mousePosition.x * -40,
+                y: mousePosition.y * -40,
+              }}
+              transition={{ type: "spring", stiffness: 80, damping: 25 }}
+            />
+            <motion.div
+              className="absolute bottom-8 left-8 w-20 h-20 border-l-2 border-b-2 border-primary/20 rounded-bl-2xl"
+              animate={{
+                x: mousePosition.x * -40,
+                y: mousePosition.y * -40,
+              }}
+              transition={{ type: "spring", stiffness: 80, damping: 25 }}
+            />
+            <motion.div
+              className="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-primary/20 rounded-br-2xl"
+              animate={{
+                x: mousePosition.x * -40,
+                y: mousePosition.y * -40,
+              }}
+              transition={{ type: "spring", stiffness: 80, damping: 25 }}
+            />
+          </div>
+
           {/* Floating light particles */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {particles.map((particle) => (
