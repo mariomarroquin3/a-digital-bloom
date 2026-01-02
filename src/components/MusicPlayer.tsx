@@ -4,9 +4,8 @@ import { Volume2, VolumeX, Music, SkipBack, SkipForward } from "lucide-react";
 
 // Playlist - add your songs here
 const playlist = [
-  { title: "Song 1", src: "/placeholder-music.mp3" },
-  { title: "Song 2", src: "/placeholder-music.mp3" },
-  { title: "Song 3", src: "/placeholder-music.mp3" },
+  { title: "Song 1", src: "public/placeholder-music.mp3" },
+  { title: "Song 2", src: "public/TheWinnerTakesitAll.mp3" },
 ];
 
 const MusicPlayer = () => {

@@ -36,7 +36,7 @@ const PlayfulNote = () => {
           viewport={{ once: true }}
           transition={{ delay: 1.2, duration: 0.5 }}
         >
-          You're everything to me ♡
+          You're important
         </motion.span>
       </motion.div>
     </div>
